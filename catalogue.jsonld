@@ -317,7 +317,7 @@
       "@id": "https://solid-panes.github.io/store/catalogue.jsonld#podos-contacts",
       "@type": "tools:AppRegistration",
       "schema:name": "PodOS Contacts",
-      "schema:description": "Opens an address book.",
+      "schema:description": "Opens an address book. Experimental.",
       "schema:mainEntityOfPage": {
         "@id": "https://contacts.pod-os.org/"
       },

@@ -14,7 +14,7 @@ const apps = [
   ['penny', 'Penny', 'A plain view of the data in any resource, for anything.', 'https://penny.vincenttunru.com/explore/?url={url}', '', 'https://penny.vincenttunru.com/'],
   ['solid-file-manager', 'Solid File Manager', 'A file manager for a folder.', 'https://otto-aa.github.io/solid-filemanager/?url={url}', 'http://www.w3.org/ns/ldp#Container', 'https://github.com/Otto-AA/solid-filemanager'],
   ['umai', 'Umai', 'A recipe manager. Opens a recipe in its viewer.', 'https://umai.noeldemartin.com/viewer?url={url}', 'https://schema.org/Recipe', 'https://umai.noeldemartin.com/'],
-  ['podos-contacts', 'PodOS Contacts', 'Opens an address book.', 'https://contacts.pod-os.org/address-book?uri={url}', 'http://www.w3.org/2006/vcard/ns#AddressBook', 'https://contacts.pod-os.org/']
+  ['podos-contacts', 'PodOS Contacts', 'Opens an address book. Experimental.', 'https://contacts.pod-os.org/address-book?uri={url}', 'http://www.w3.org/2006/vcard/ns#AddressBook', 'https://contacts.pod-os.org/']
 ]
 const graph = [{
   '@id': BASE, '@type': 'tools:ToolIndex',
