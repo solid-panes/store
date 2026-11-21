@@ -137,7 +137,7 @@
       "@id": "https://solid-panes.github.io/store/catalogue.jsonld#poll",
       "@type": "tools:Registration",
       "schema:name": "Poll",
-      "schema:description": "Pick a time, or vote on options. A poll kept in your pod; people answer yes, if need be, or no.",
+      "schema:description": "Find a time for a call or a meeting. Offer hours; people say which they can make, each in their own time zone.",
       "schema:author": "Melvin Carvalho",
       "schema:license": "MIT",
       "schema:mainEntityOfPage": {
