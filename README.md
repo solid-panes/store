@@ -36,3 +36,14 @@ PodOS vocabulary does not yet have a kind for a JavaScript module.
 ## Licence
 
 [MIT](LICENSE), copyright Melvin Carvalho.
+
+## Tests
+
+```sh
+node tests/run.mjs               # the catalogue check, then the page in a real browser
+node tests/catalogue.mjs --live  # also fetches every pane file and expects JavaScript
+```
+
+Run them before any change is published. The catalogue check confirms every entry is complete, uses `https`, has a
+link pattern the reader understands, and that `catalogue.jsonld` is exactly what `build.mjs` writes. The page check
+needs Chromium (`chromium-browser`) and serves this folder itself, so nothing else has to be running.
