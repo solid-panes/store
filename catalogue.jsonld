@@ -1,0 +1,357 @@
+{
+  "@context": {
+    "tools": "https://pod-os.org/vocab/tools#",
+    "ac": "https://www.w3.org/ns/ac#",
+    "hydra": "http://www.w3.org/ns/hydra/core#",
+    "schema": "https://schema.org/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "panes": "https://mashlib.com/ns/panes#"
+  },
+  "@graph": [
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld",
+      "@type": "tools:ToolIndex",
+      "schema:name": "solid-panes store",
+      "schema:description": "A public catalogue of panes and apps for a Solid tool index. Each entry is a registration that can be copied into your own index.",
+      "tools:registration": [
+        {
+          "@id": "https://solid-panes.github.io/store/catalogue.jsonld#notes"
+        },
+        {
+          "@id": "https://solid-panes.github.io/store/catalogue.jsonld#chess"
+        },
+        {
+          "@id": "https://solid-panes.github.io/store/catalogue.jsonld#profile"
+        },
+        {
+          "@id": "https://solid-panes.github.io/store/catalogue.jsonld#tool-index"
+        },
+        {
+          "@id": "https://solid-panes.github.io/store/catalogue.jsonld#data-browser"
+        },
+        {
+          "@id": "https://solid-panes.github.io/store/catalogue.jsonld#penny"
+        },
+        {
+          "@id": "https://solid-panes.github.io/store/catalogue.jsonld#solid-file-manager"
+        },
+        {
+          "@id": "https://solid-panes.github.io/store/catalogue.jsonld#umai"
+        },
+        {
+          "@id": "https://solid-panes.github.io/store/catalogue.jsonld#podos-contacts"
+        }
+      ]
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#notes",
+      "@type": "tools:Registration",
+      "schema:name": "Notes reader",
+      "schema:description": "Markdown notes read as pages, with links between notes and previous and next.",
+      "schema:author": "Melvin Carvalho",
+      "schema:license": "MIT",
+      "schema:mainEntityOfPage": {
+        "@id": "https://solid-panes.github.io/notes/"
+      },
+      "ac:capability": {
+        "@id": "https://solid-panes.github.io/store/catalogue.jsonld#notes-cap"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#notes-cap",
+      "@type": "ac:Capability",
+      "ac:action": {
+        "@id": "odrl:display"
+      },
+      "ac:invocation": {
+        "@id": "https://solid-panes.github.io/store/catalogue.jsonld#notes-inv"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#notes-inv",
+      "@type": "panes:PaneModuleInvocation",
+      "schema:url": "https://solid-panes.github.io/notes/notes-pane.js"
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#chess",
+      "@type": "tools:Registration",
+      "schema:name": "Chess",
+      "schema:description": "A chess game kept in your pod, played on a board in the data browser.",
+      "schema:author": "Melvin Carvalho",
+      "schema:license": "GPL-3.0",
+      "schema:mainEntityOfPage": {
+        "@id": "https://solid-panes.github.io/chess/"
+      },
+      "ac:capability": {
+        "@id": "https://solid-panes.github.io/store/catalogue.jsonld#chess-cap"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#chess-cap",
+      "@type": "ac:Capability",
+      "ac:action": {
+        "@id": "odrl:display"
+      },
+      "ac:invocation": {
+        "@id": "https://solid-panes.github.io/store/catalogue.jsonld#chess-inv"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#chess-inv",
+      "@type": "panes:PaneModuleInvocation",
+      "schema:url": "https://solid-panes.github.io/chess/chess-pane.js"
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#profile",
+      "@type": "tools:Registration",
+      "schema:name": "Profile",
+      "schema:description": "A person's profile: photo, name, bio, CV, projects, skills, languages, contacts and friends. Read-only.",
+      "schema:author": "Melvin Carvalho",
+      "schema:license": "MIT",
+      "schema:mainEntityOfPage": {
+        "@id": "https://solid-panes.github.io/profile/"
+      },
+      "ac:capability": {
+        "@id": "https://solid-panes.github.io/store/catalogue.jsonld#profile-cap"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#profile-cap",
+      "@type": "ac:Capability",
+      "ac:action": {
+        "@id": "odrl:display"
+      },
+      "ac:invocation": {
+        "@id": "https://solid-panes.github.io/store/catalogue.jsonld#profile-inv"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#profile-inv",
+      "@type": "panes:PaneModuleInvocation",
+      "schema:url": "https://solid-panes.github.io/profile/profile-pane.js"
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#tool-index",
+      "@type": "tools:Registration",
+      "schema:name": "Tool index dashboard",
+      "schema:description": "The dashboard for your tool index: add, switch off and remove panes and apps.",
+      "schema:author": "Melvin Carvalho",
+      "schema:license": "MIT",
+      "schema:mainEntityOfPage": {
+        "@id": "https://solid-panes.github.io/tool-index/"
+      },
+      "ac:capability": {
+        "@id": "https://solid-panes.github.io/store/catalogue.jsonld#tool-index-cap"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#tool-index-cap",
+      "@type": "ac:Capability",
+      "ac:action": {
+        "@id": "odrl:display"
+      },
+      "ac:invocation": {
+        "@id": "https://solid-panes.github.io/store/catalogue.jsonld#tool-index-inv"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#tool-index-inv",
+      "@type": "panes:PaneModuleInvocation",
+      "schema:url": "https://solid-panes.github.io/tool-index/tool-index-pane.js"
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#data-browser",
+      "@type": "tools:AppRegistration",
+      "schema:name": "Data Browser (SolidOS)",
+      "schema:description": "The SolidOS data browser, for anything.",
+      "schema:mainEntityOfPage": {
+        "@id": "https://github.com/SolidOS/mashlib"
+      },
+      "ac:capability": {
+        "@id": "https://solid-panes.github.io/store/catalogue.jsonld#data-browser-cap"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#data-browser-cap",
+      "@type": "ac:Capability",
+      "ac:action": {
+        "@id": "odrl:display"
+      },
+      "ac:invocation": {
+        "@id": "https://solid-panes.github.io/store/catalogue.jsonld#data-browser-inv"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#data-browser-inv",
+      "@type": "ac:UriTemplateInvocation",
+      "hydra:template": "https://solidos.github.io/mashlib/dist/browse.html?uri={url}",
+      "hydra:mapping": {
+        "@id": "https://solid-panes.github.io/store/catalogue.jsonld#data-browser-map"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#data-browser-map",
+      "hydra:variable": "url",
+      "hydra:property": {
+        "@id": "ac:open"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#penny",
+      "@type": "tools:AppRegistration",
+      "schema:name": "Penny",
+      "schema:description": "A plain view of the data in any resource, for anything.",
+      "schema:mainEntityOfPage": {
+        "@id": "https://penny.vincenttunru.com/"
+      },
+      "ac:capability": {
+        "@id": "https://solid-panes.github.io/store/catalogue.jsonld#penny-cap"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#penny-cap",
+      "@type": "ac:Capability",
+      "ac:action": {
+        "@id": "odrl:display"
+      },
+      "ac:invocation": {
+        "@id": "https://solid-panes.github.io/store/catalogue.jsonld#penny-inv"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#penny-inv",
+      "@type": "ac:UriTemplateInvocation",
+      "hydra:template": "https://penny.vincenttunru.com/explore/?url={url}",
+      "hydra:mapping": {
+        "@id": "https://solid-panes.github.io/store/catalogue.jsonld#penny-map"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#penny-map",
+      "hydra:variable": "url",
+      "hydra:property": {
+        "@id": "ac:open"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#solid-file-manager",
+      "@type": "tools:AppRegistration",
+      "schema:name": "Solid File Manager",
+      "schema:description": "A file manager for a folder.",
+      "schema:mainEntityOfPage": {
+        "@id": "https://github.com/Otto-AA/solid-filemanager"
+      },
+      "ac:capability": {
+        "@id": "https://solid-panes.github.io/store/catalogue.jsonld#solid-file-manager-cap"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#solid-file-manager-cap",
+      "@type": "ac:Capability",
+      "ac:action": {
+        "@id": "odrl:display"
+      },
+      "ac:resourceType": {
+        "@id": "http://www.w3.org/ns/ldp#Container"
+      },
+      "ac:invocation": {
+        "@id": "https://solid-panes.github.io/store/catalogue.jsonld#solid-file-manager-inv"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#solid-file-manager-inv",
+      "@type": "ac:UriTemplateInvocation",
+      "hydra:template": "https://otto-aa.github.io/solid-filemanager/?url={url}",
+      "hydra:mapping": {
+        "@id": "https://solid-panes.github.io/store/catalogue.jsonld#solid-file-manager-map"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#solid-file-manager-map",
+      "hydra:variable": "url",
+      "hydra:property": {
+        "@id": "ac:open"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#umai",
+      "@type": "tools:AppRegistration",
+      "schema:name": "Umai",
+      "schema:description": "A recipe manager. Opens a recipe in its viewer.",
+      "schema:mainEntityOfPage": {
+        "@id": "https://umai.noeldemartin.com/"
+      },
+      "ac:capability": {
+        "@id": "https://solid-panes.github.io/store/catalogue.jsonld#umai-cap"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#umai-cap",
+      "@type": "ac:Capability",
+      "ac:action": {
+        "@id": "odrl:display"
+      },
+      "ac:resourceType": {
+        "@id": "https://schema.org/Recipe"
+      },
+      "ac:invocation": {
+        "@id": "https://solid-panes.github.io/store/catalogue.jsonld#umai-inv"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#umai-inv",
+      "@type": "ac:UriTemplateInvocation",
+      "hydra:template": "https://umai.noeldemartin.com/viewer?url={url}",
+      "hydra:mapping": {
+        "@id": "https://solid-panes.github.io/store/catalogue.jsonld#umai-map"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#umai-map",
+      "hydra:variable": "url",
+      "hydra:property": {
+        "@id": "ac:open"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#podos-contacts",
+      "@type": "tools:AppRegistration",
+      "schema:name": "PodOS Contacts",
+      "schema:description": "Opens an address book.",
+      "schema:mainEntityOfPage": {
+        "@id": "https://contacts.pod-os.org/"
+      },
+      "ac:capability": {
+        "@id": "https://solid-panes.github.io/store/catalogue.jsonld#podos-contacts-cap"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#podos-contacts-cap",
+      "@type": "ac:Capability",
+      "ac:action": {
+        "@id": "odrl:display"
+      },
+      "ac:resourceType": {
+        "@id": "http://www.w3.org/2006/vcard/ns#AddressBook"
+      },
+      "ac:invocation": {
+        "@id": "https://solid-panes.github.io/store/catalogue.jsonld#podos-contacts-inv"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#podos-contacts-inv",
+      "@type": "ac:UriTemplateInvocation",
+      "hydra:template": "https://contacts.pod-os.org/address-book?uri={url}",
+      "hydra:mapping": {
+        "@id": "https://solid-panes.github.io/store/catalogue.jsonld#podos-contacts-map"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#podos-contacts-map",
+      "hydra:variable": "url",
+      "hydra:property": {
+        "@id": "ac:open"
+      }
+    }
+  ]
+}

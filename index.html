@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Store · panes and apps for your Solid pod</title>
+<meta name="description" content="A public catalogue of panes and apps for a Solid tool index. Add one to your own index from the dashboard.">
+<link rel="canonical" href="https://solid-panes.github.io/store/">
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #f6f7fb; color: #1f2430; font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 860px; margin: 0 auto; padding: 40px max(16px, env(safe-area-inset-left, 0px)) 72px; }
+  h1 { font-size: 32px; letter-spacing: -.01em; margin: 0 0 6px; }
+  h2 { font-size: 20px; margin: 30px 0 12px; }
+  p { margin: 0 0 14px; }
+  .lead { color: #4a5263; font-size: 17px; margin-bottom: 22px; }
+  .how { background: #fff; border: 1px solid #e3e6ee; border-radius: 14px; padding: 18px 20px; }
+  .how ol { margin: 8px 0 14px; padding-left: 22px; }
+  a.button { display: inline-block; font-weight: 650; padding: 10px 20px; border-radius: 999px; background: #6d4aff; color: #fff; text-decoration: none; }
+  a.button:hover { background: #5b3be0; }
+  ul.cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .card { background: #fff; border: 1px solid #e3e6ee; border-radius: 14px; padding: 16px 18px; }
+  .name { font-weight: 680; font-size: 18px; }
+  .kind { display: inline-block; margin-left: 8px; padding: 1px 9px; border-radius: 999px; font-size: 12px; font-weight: 650; vertical-align: 2px; background: #ede9fe; color: #5b21b6; }
+  .kind.app { background: #eef1f6; color: #4a5263; }
+  .about { margin: 4px 0 8px; color: #33405c; }
+  .addr { display: block; font: 13px/1.5 ui-monospace, "SF Mono", Menlo, monospace; color: #33405c; overflow-wrap: anywhere; }
+  .meta { margin-top: 6px; font-size: 14px; color: #5b6272; overflow-wrap: anywhere; }
+  a { color: #4b3bd6; }
+  .small { font-size: 14px; color: #5b6272; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Store</h1>
+  <p class="lead">A public catalogue of panes and apps for your Solid pod. Panes draw your data inside the data browser; apps open it in their own tab.</p>
+
+  <section class="how">
+    <strong>How to add one</strong>
+    <ol>
+      <li>Open your tool index dashboard. The Tools app finds it, or creates it, for you.</li>
+      <li>Choose <em>Browse the store</em>.</li>
+      <li>Press <em>Add</em> beside what you want. Its entry is copied into your own index.</li>
+    </ol>
+    <a class="button" href="https://solid-apps.github.io/tools/">Open the Tools app</a>
+  </section>
+
+  <h2>Panes</h2>
+  <ul class="cards" id="panes"><li class="small">Loading…</li></ul>
+  <h2>Apps</h2>
+  <ul class="cards" id="apps"><li class="small">Loading…</li></ul>
+
+  <p class="small" style="margin-top:28px">The catalogue is one file, <a href="catalogue.jsonld">catalogue.jsonld</a>, in the <a href="https://pod-os.org/vocab/tools">PodOS tools vocabulary</a>: the same format as a tool index, so adding an entry is a copy. A pane is a small program that runs as you; add only panes from authors you trust. Source: <a href="https://github.com/solid-panes/store">github.com/solid-panes/store</a></p>
+</main>
+<script type="module">
+  const TOOLS = 'tools:', AC = 'ac:'
+  const one = (value) => Array.isArray(value) ? value[0] : value
+  const ref = (value) => { const v = one(value); return v && typeof v === 'object' ? v['@id'] : v }
+  const add = (parent, tag, className, text) => { const node = document.createElement(tag); if (className) node.className = className; if (text !== undefined) node.textContent = text; parent.appendChild(node); return node }
+  try {
+    const response = await fetch('catalogue.jsonld', { cache: 'no-store' })
+    if (!response.ok) throw new Error('the catalogue answered ' + response.status)
+    const doc = await response.json()
+    const nodes = new Map(doc['@graph'].map(node => [node['@id'], node]))
+    const index = doc['@graph'].find(node => [].concat(node['@type'] || []).includes(TOOLS + 'ToolIndex'))
+    const lists = { pane: document.getElementById('panes'), app: document.getElementById('apps') }
+    lists.pane.replaceChildren(); lists.app.replaceChildren()
+    for (const link of [].concat(index[TOOLS + 'registration'] || [])) {
+      const entry = nodes.get(link['@id']); if (!entry) continue
+      const capability = nodes.get(ref(entry[AC + 'capability'])) || {}
+      const invocation = nodes.get(ref(capability[AC + 'invocation'])) || {}
+      const isApp = [].concat(invocation['@type'] || []).includes(AC + 'UriTemplateInvocation')
+      const address = isApp ? invocation['hydra:template'] : invocation['schema:url']
+      const card = add(isApp ? lists.app : lists.pane, 'li', 'card')
+      const name = add(card, 'div', 'name', entry['schema:name'])
+      add(name, 'span', 'kind' + (isApp ? ' app' : ''), isApp ? 'App' : 'Pane')
+      if (entry['schema:description']) add(card, 'p', 'about', entry['schema:description'])
+      add(card, 'code', 'addr', address)
+      const meta = add(card, 'div', 'meta')
+      const bits = []
+      const forType = ref(capability[AC + 'resourceType'])
+      bits.push(isApp ? (forType ? 'For ' + forType : 'For anything') : 'Decides for itself what it can show')
+      if (entry['schema:author']) bits.push('by ' + entry['schema:author'])
+      if (entry['schema:license']) bits.push(entry['schema:license'])
+      meta.textContent = bits.join(' · ') + ' · '
+      const home = ref(entry['schema:mainEntityOfPage'])
+      if (home && /^https:/.test(home)) { const a = add(meta, 'a', '', 'more'); a.href = home; a.rel = 'noopener' }
+    }
+  } catch (error) {
+    for (const id of ['panes', 'apps']) { const list = document.getElementById(id); list.replaceChildren(); add(list, 'li', 'small', 'The catalogue could not be read: ' + (error && error.message ? error.message : error)) }
+  }
+</script>
+</body>
+</html>
