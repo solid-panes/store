@@ -28,6 +28,7 @@ const SAMPLES = {
   'https://solid-panes.github.io/notes/notes-pane.js': 'https://solid-panes.github.io/notes/notes/',
   'https://solid-panes.github.io/chess/chess-pane.js': 'https://solid-panes.github.io/chess/games/opera.ttl',
   'https://solid-panes.github.io/profile/profile-pane.js': 'https://solid-panes.github.io/profile/samples/alice.ttl#me',
+  'https://solid-panes.github.io/poll/poll-pane.js': 'https://solid-panes.github.io/poll/samples/dinner/index.ttl#this',
   'https://solid-panes.github.io/tool-index/tool-index-pane.js': 'https://solid-panes.github.io/tool-index/samples/tool-index.ttl'
 }
 

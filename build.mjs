@@ -6,6 +6,7 @@ const panes = [
   ['notes', 'Notes reader', 'Markdown notes read as pages, with links between notes and previous and next.', 'https://solid-panes.github.io/notes/notes-pane.js', 'https://solid-panes.github.io/notes/', me, 'MIT'],
   ['chess', 'Chess', 'A chess game kept in your pod, played on a board in the data browser.', 'https://solid-panes.github.io/chess/chess-pane.js', 'https://solid-panes.github.io/chess/', me, 'GPL-3.0'],
   ['profile', 'Profile', "A person's profile: photo, name, bio, CV, projects, skills, languages, contacts and friends. Read-only.", 'https://solid-panes.github.io/profile/profile-pane.js', 'https://solid-panes.github.io/profile/', me, 'MIT'],
+  ['poll', 'Poll', 'Pick a time, or vote on options. A poll kept in your pod; people answer yes, if need be, or no.', 'https://solid-panes.github.io/poll/poll-pane.js', 'https://solid-panes.github.io/poll/', me, 'MIT'],
   ['tool-index', 'Tool index dashboard', 'The dashboard for your tool index: add, switch off and remove panes and apps.', 'https://solid-panes.github.io/tool-index/tool-index-pane.js', 'https://solid-panes.github.io/tool-index/', me, 'MIT']
 ]
 // Apps from the list PodOS offers (core/src/open-with), with the same types.

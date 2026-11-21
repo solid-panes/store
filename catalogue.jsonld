@@ -24,6 +24,9 @@
           "@id": "https://solid-panes.github.io/store/catalogue.jsonld#profile"
         },
         {
+          "@id": "https://solid-panes.github.io/store/catalogue.jsonld#poll"
+        },
+        {
           "@id": "https://solid-panes.github.io/store/catalogue.jsonld#tool-index"
         },
         {
@@ -129,6 +132,35 @@
       "@id": "https://solid-panes.github.io/store/catalogue.jsonld#profile-inv",
       "@type": "panes:PaneModuleInvocation",
       "schema:url": "https://solid-panes.github.io/profile/profile-pane.js"
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#poll",
+      "@type": "tools:Registration",
+      "schema:name": "Poll",
+      "schema:description": "Pick a time, or vote on options. A poll kept in your pod; people answer yes, if need be, or no.",
+      "schema:author": "Melvin Carvalho",
+      "schema:license": "MIT",
+      "schema:mainEntityOfPage": {
+        "@id": "https://solid-panes.github.io/poll/"
+      },
+      "ac:capability": {
+        "@id": "https://solid-panes.github.io/store/catalogue.jsonld#poll-cap"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#poll-cap",
+      "@type": "ac:Capability",
+      "ac:action": {
+        "@id": "odrl:display"
+      },
+      "ac:invocation": {
+        "@id": "https://solid-panes.github.io/store/catalogue.jsonld#poll-inv"
+      }
+    },
+    {
+      "@id": "https://solid-panes.github.io/store/catalogue.jsonld#poll-inv",
+      "@type": "panes:PaneModuleInvocation",
+      "schema:url": "https://solid-panes.github.io/poll/poll-pane.js"
     },
     {
       "@id": "https://solid-panes.github.io/store/catalogue.jsonld#tool-index",
