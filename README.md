@@ -26,8 +26,18 @@ The dashboard is the [tool index pane](https://github.com/solid-panes/tool-index
 
 Edit the lists at the top of `build.mjs` and run `node build.mjs`; it writes `catalogue.jsonld`.
 
-A pane is a small program that runs as the person using it. This catalogue is a list, not a review: entries
-are not checked or signed yet. Signing by authors and ratings from people you trust are the next steps
+A pane is a small program that runs as the person using it, so a pane is checked before it is listed:
+
+```sh
+node tests/panes.mjs https://example.org/my-pane.js https://example.org/something-it-draws.ttl
+```
+
+The check fails a pane that is not served over https as JavaScript, does not parse, has static imports, builds HTML
+from text (`innerHTML` and the like), runs text as code (`eval`, `new Function`), is not a pane (`name`, `label`,
+`render`), or makes the page scroll sideways at 400 px in the SolidOS Browser. It also prints notes for a person to
+weigh: further files it loads, requests it makes, whether it can write to a pod.
+
+The check is automatic and reads only the pane's own file: it is a floor, not a review, and entries are not signed yet. Signing by authors and ratings from people you trust are the next steps
 (JavaScriptSolidServer/JavaScriptSolidServer#651).
 
 The type used for a pane module, `https://mashlib.com/ns/panes#PaneModuleInvocation`, is a placeholder: the
@@ -40,7 +50,7 @@ PodOS vocabulary does not yet have a kind for a JavaScript module.
 ## Tests
 
 ```sh
-node tests/run.mjs               # the catalogue check, then the page in a real browser
+node tests/run.mjs               # the catalogue check, the page, then every listed pane
 node tests/catalogue.mjs --live  # also fetches every pane file and expects JavaScript
 ```
 
